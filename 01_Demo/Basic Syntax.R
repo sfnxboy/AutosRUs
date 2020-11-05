@@ -105,3 +105,21 @@ plt <- ggplot(mpg,aes(x=manufacturer,y=hwy)) #import dataset into ggplot2
 plt + geom_boxplot() + #add boxplot
   theme(axis.text.x=element_text(angle=45,hjust=1)) + #rotate x-axis labels 45 degrees
   geom_point() #overlay scatter plot on top
+# By layering our data points on top of our boxplot, we can see the general distribution of values within each box
+# as well as the number of data points.
+
+
+# facet() allows us to plot our measurements but keep each level of our grouping variable seperate
+mpg_long <- mpg %>% gather(key="MPG_Type",value="Rating",c(cty,hwy)) #convert to long format
+plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type)) #import dataset into ggplot2
+plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) #add boxplot with labels rotated 45 degrees
+
+# facet_wrap() allows us to facet, but places the plots side by side
+plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type)) #import dataset into ggplot2
+plt + geom_boxplot() + facet_wrap(vars(MPG_Type)) + #create multiple boxplots, one for each MPG type
+  theme(axis.text.x=element_text(angle=45,hjust=1),legend.position = "none") + xlab("Manufacturer") #rotate x-axis labels
+
+
+# Qualitative test for normality, geo_density() plots distribution
+ggplot(mtcars,aes(x=wt)) + geom_density() #visualize distribution using density plot
+
