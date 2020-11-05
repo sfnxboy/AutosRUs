@@ -9,15 +9,23 @@ The R language has a large community, and great number of supportive documentati
 
 ## Process
 •	Load, clean up, and reshape datasets using tidyverse in R.
+
 In addition to the native statistical functions, there are many other useful data transformation and modelling libraries, such as the tidyverse package, that simplify the process of ETL and visualizations.
 To install the tidyverse package, enter the following code into RStudios Console: ```install.packages("tidyverse")```.
 
 •	Generate and interpret more complex plots such as boxplots and heatmaps using ggplot2.
+
 •	Plot and identify distribution characteristics of a given dataset.
+
 •	Formulate null and alternative hypothesis tests for a given data problem.
+
 •	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
+
 •	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset.
+
 •	Implement and evaluate a chi-squared test for a given dataset.
+
 •	Identify key characteristics of A/B and A/A testing.
+
 •	Determine the most appropriate statistical test for a given hypothesis and dataset.
 
