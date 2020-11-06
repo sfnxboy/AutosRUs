@@ -12,32 +12,42 @@ The R language has a large community, and great number of supportive documentati
 
 In addition to the native statistical functions, there are many other useful data transformation and modelling libraries, such as the tidyverse package, that simplify the process of ETL and visualizations.
 To install the tidyverse package, enter the following code into RStudio's Console: ```install.packages("tidyverse")```.
+
 ```demo_table <- read.csv(file='demo.csv',check.names=F,stringsAsFactors = F)```
 
 For this project we will also need to import the rjson file to load data from .json files, enter the following code into RStudio's console: ```install.packages("rjson")```.
+
 ```demo_table2 <- fromJSON(txt='demo.json')```
 
 To filter a table, instantiate a variable, and define the column you wish to filter on with teh $ operator. Note the trailing comma.
+
 ```filter_table <- demo_table2[demo_table2$price > 10000,]```
 
 The subset() method is a cleaner method to filter data.
+
 ```filter_table2 <- subset(demo_table2, price > 10000 & drive == "4wd" & "clean" %in% title_status)```.
+
 Without the subset method, the code would look like this:
+
 ```filter_table3 <- demo_table2[("clean" %in% demo_table2$title_status) & (demo_table2$price > 10000) & (demo_table2$drive == "4wd"),]```
 
 After importing the tidyverse library, the mutate() method can be used to transform the data.
+
 ```demo_table <- demo_table %>% mutate(Mileage_per_Year=Total_Miles/(2020-Year),IsActive=TRUE)```
 
 Similarly to Pandas groupby() method, the group_by() method groups the data by a factor, as so:
+
 ```summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage=mean(odometer), .groups = 'keep')```
 
 The gather() method can be used to simplify over complicated data frames so that it may be compative with other methods.
+
 ```
 demo_table3 <- read.csv('demo2.csv',check.names = F,stringsAsFactors = F)
 long_table <- gather(demo_table3,key="Metric",value="Score",buying_price:popularity)
 ```
 
-spread() can be used interchangeably with gather(). spread() spreads a key-value pair across multiple columns
+spread() can be used interchangeably with gather(). spread() spreads a key-value pair across multiple columns.
+
 ```wide_table <- long_table %>% spread(key="Metric",value="Score")```
 
 
