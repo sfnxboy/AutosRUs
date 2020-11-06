@@ -158,6 +158,9 @@ sample_table <- population_table %>% sample_n(50) #randomly sample 50 data point
 plt <- ggplot(sample_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
 plt + geom_density() #visualize distribution using density plot
 ```
+![image](https://user-images.githubusercontent.com/68082808/98399645-b90ba800-2030-11eb-86e2-a3ba45895f97.png)
+
+By using dplyr's sample_n() function, we can create a random sample dataset from our population data that contains minimal bias and (ideally) represents the population data. Depending on the size of the population data, we may need to also adjust the size argument in our sample_n() function to ensure that our sample data is representative of the underlying population data. There are two basic ways to check that our sample data is representative of the underlying population: a qualitative assessment of each density plot or a quantitative statistical test such as the one-sample t-test.
 
 
 ###	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset.
