@@ -11,11 +11,73 @@ The R language has a large community, and great number of supportive documentati
 •	Load, clean up, and reshape datasets using tidyverse in R.
 
 In addition to the native statistical functions, there are many other useful data transformation and modelling libraries, such as the tidyverse package, that simplify the process of ETL and visualizations.
-To install the tidyverse package, enter the following code into RStudios Console: ```install.packages("tidyverse")```.
+To install the tidyverse package, enter the following code into RStudio's Console: ```install.packages("tidyverse")```.
+```demo_table <- read.csv(file='demo.csv',check.names=F,stringsAsFactors = F)```
+
+For this project we will also need to import the rjson file to load data from .json files, enter the following code into RStudio's console: ```install.packages("rjson")```.
+```demo_table2 <- fromJSON(txt='demo.json')```
+
+To filter a table, instantiate a variable, and define the column you wish to filter on with teh $ operator. Note the trailing comma.
+```filter_table <- demo_table2[demo_table2$price > 10000,]```
+
+The subset() method is a cleaner method to filter data.
+```filter_table2 <- subset(demo_table2, price > 10000 & drive == "4wd" & "clean" %in% title_status)```.
+Without the subset method, the code would look like this:
+```filter_table3 <- demo_table2[("clean" %in% demo_table2$title_status) & (demo_table2$price > 10000) & (demo_table2$drive == "4wd"),]```
+
+After importing the tidyverse library, the mutate() method can be used to transform the data.
+```demo_table <- demo_table %>% mutate(Mileage_per_Year=Total_Miles/(2020-Year),IsActive=TRUE)```
+
+Similarly to Pandas groupby() method, the group_by() method groups the data by a factor, as so:
+```summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage=mean(odometer), .groups = 'keep')```
+
+The gather() method can be used to simplify over complicated data frames so that it may be compative with other methods.
+```
+demo_table3 <- read.csv('demo2.csv',check.names = F,stringsAsFactors = F)
+long_table <- gather(demo_table3,key="Metric",value="Score",buying_price:popularity)
+```
+
+spread() can be used interchangeably with gather(). spread() spreads a key-value pair across multiple columns
+```wide_table <- long_table %>% spread(key="Metric",value="Score")```
+
 
 •	Generate and interpret more complex plots such as boxplots and heatmaps using ggplot2.
 
+Bar Plot
+```
+plt + geom_col() + xlab("Manufacturing Company") + ylab("Number of Vehicles in Dataset") + #plot a boxplot with labels
+  theme(axis.text.x=element_text(angle=45,hjust=1)) #rotate the x-axis label 45 degrees
+```
+
+Line Plot
+```
+plt + geom_line() + scale_x_discrete(limits=c(4,6,8)) + scale_y_continuous(breaks = c(15:30)) #add line plot with labels
+```
+
+Scatter Plot
+```
+plt + geom_point() + labs(x="Engine Size (L)", y="City Fuel-Efficiency (MPG)", color="Vehicle Class",shape="Type of Drive", size="City Fuel-Efficiency (MPG)") #add scatter plot with multiple aesthetics
+```
+
+Box Plot
+```
+plt + geom_boxplot(aes(colour = manufacturer), linetype = "dashed") + theme(axis.text.x=element_text(angle=45,hjust=1)) #add boxplot and rotate x-axis labels 45 degrees
+```
+
+Heatmap
+```
+plt + geom_tile() + labs(x="Model",y="Vehicle Year",fill="Mean Highway (MPG)") + #add heatmap with labels 
+  theme(axis.text.x = element_text(angle=90,hjust=1,vjust=.5)) #rotate x-axis labels 90 degrees
+```
+
 •	Plot and identify distribution characteristics of a given dataset.
+
+Its important to understand how data is categorized:
+- Continuous: Numerical data that can be infinitely precise
+- Ordinal: Categorical data that has direction, but the distance between values is ambiguous.
+- Nominal: Data used as labels or names.
+- Interval: Numerical data spaced evenly on a scale.
+- Dichotomous: Data that is one of two possible values.
 
 •	Formulate null and alternative hypothesis tests for a given data problem.
 
