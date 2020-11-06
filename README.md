@@ -115,6 +115,19 @@ If our dataset is smaller, or the skewness does impact the overall shape of our 
 
 ###	Formulate null and alternative hypothesis tests for a given data problem.
 
+Although data collection and research are important, the backbone of the scientific method is hypothesis testing. Hypotheses are utilized by the scientific method to help narrow the scope of research and testing as well as provide a clear outcome of our results. Without generating a set of hypotheses, it becomes exponentially more difficult to quantify results and provide measurable outcomes to our analyses. As data analysts, it's our job to match a set of hypotheses to an appropriate statistical test to ensure that results are interpreted correctly. In other words, we use statistical hypothesis testing to determine which of our hypotheses are most likely to be true. There are two types of statistical hypothesis:
+
+- The null hypothesis is also known as H0 and is generally the hypothesis that can be explained by random chance.
+- The alternate hypothesis is also known as Ha and is generally the hypothesis that is influenced by non-random events.
+
+Regardless of the complexity of the dataset or the proposed question, hypothesis testing uses the same five steps:
+
+1. Generate a null hypothesis, its corresponding alternate hypothesis, and the significance level.
+2. Identify a statistical analysis to assess the truth of the null hypothesis.
+3. Compute the p-value using statistical analysis.
+4. Compare p-value to the significance level.
+5. Reject (or fail to reject) the null hypothesis and generate the conclusion.
+
 ###	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
 
 ###	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset.
