@@ -8,7 +8,7 @@ In this project I will be working with a mock company, AutosRUs, who have realiz
 The R language has a large community, and great number of supportive documentation. Check out this site for more information on the methods used in this project https://www.rdocumentation.org/. For documentation on the tidyverse library check out this source, https://www.tidyverse.org/. 
 
 ## Process
-•	Load, clean up, and reshape datasets using tidyverse in R.
+###	Load, clean up, and reshape datasets using tidyverse in R.
 
 In addition to the native statistical functions, there are many other useful data transformation and modelling libraries, such as the tidyverse package, that simplify the process of ETL and visualizations.
 To install the tidyverse package, enter the following code into RStudio's Console: ```install.packages("tidyverse")```.
@@ -51,7 +51,7 @@ spread() can be used interchangeably with gather(). spread() spreads a key-value
 ```wide_table <- long_table %>% spread(key="Metric",value="Score")```
 
 
-•	Generate and interpret more complex plots such as boxplots and heatmaps using ggplot2.
+###	Generate and interpret more complex plots such as boxplots and heatmaps using ggplot2.
 
 Bar Plot
 ```
@@ -80,7 +80,7 @@ plt + geom_tile() + labs(x="Model",y="Vehicle Year",fill="Mean Highway (MPG)") +
   theme(axis.text.x = element_text(angle=90,hjust=1,vjust=.5)) #rotate x-axis labels 90 degrees
 ```
 
-•	Plot and identify distribution characteristics of a given dataset.
+###	Plot and identify distribution characteristics of a given dataset.
 
 Its important to understand how data is categorized:
 - Continuous: Numerical data that can be infinitely precise
@@ -113,15 +113,14 @@ If our dataset is smaller, or the skewness does impact the overall shape of our 
 - Resample or regenerate data if we think that the data might not be representative of the original conditions or dataset.
 - Transform our data values by normalization, using another numerical variable, or by transforming the data using an operator. The concept of transforming skewed data is very popular with scientists who deal with datasets where values can differ by orders of magnitude. One of the easiest means of transforming data is using a log-transform, where each value in the numeric dataset is transformed taking either natural log, or log10. By using a log-transformation, the effects of extreme values are reduced, and this transformation can help make each distribution tail more symmetrical.
 
-•	Formulate null and alternative hypothesis tests for a given data problem.
+###	Formulate null and alternative hypothesis tests for a given data problem.
 
-•	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
+###	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
 
-•	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset.
+###	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset.
 
-•	Implement and evaluate a chi-squared test for a given dataset.
+###	Implement and evaluate a chi-squared test for a given dataset.
 
-•	Identify key characteristics of A/B and A/A testing.
+###	Identify key characteristics of A/B and A/A testing.
 
-•	Determine the most appropriate statistical test for a given hypothesis and dataset.
-
+###	Determine the most appropriate statistical test for a given hypothesis and dataset.
