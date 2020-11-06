@@ -103,7 +103,15 @@ Often times data analysts would use the Shapiro-Wilk test for normality. The sha
 
 ```shapiro.test(mtcars$wt)```
 
+![image](https://user-images.githubusercontent.com/68082808/98383262-442d7380-201a-11eb-93cf-a14b65839cd1.png)
 
+When dealing with relatively small data sets, our distributions may often be asymmetrical. Compared to the normal distribution, where each tail of the distribution mirrors eachother, the asymmetrical distribution has one distribution tail that is longer than the other. This asymmetrical distribution is commonly referred to as a skewed distribution, and there are two types, left skew and right skew. As with most problems in data analytics, we must approach skewness on a case-by-case basis. Depending on the severity of the skewness and the size of the dataset, there are multiple means of dealing (or not dealing) with skewness. If our dataset is large, or the skewness is very subtle, we would simply point out that our data distribution shows signs of skew during reporting or presentation. In these cases, our mean and median will be roughly the same value, and there should be minimal impact to any downstream analysis.
+
+If our dataset is smaller, or the skewness does impact the overall shape of our distribution, more action is needed. There are a few different things we can try:
+
+- If possible, add more data points to our dataset to alleviate the effect of skew. However, this might not be possible or might not improve the distribution.
+- Resample or regenerate data if we think that the data might not be representative of the original conditions or dataset.
+- Transform our data values by normalization, using another numerical variable, or by transforming the data using an operator. The concept of transforming skewed data is very popular with scientists who deal with datasets where values can differ by orders of magnitude. One of the easiest means of transforming data is using a log-transform, where each value in the numeric dataset is transformed taking either natural log, or log10. By using a log-transformation, the effects of extreme values are reduced, and this transformation can help make each distribution tail more symmetrical.
 
 •	Formulate null and alternative hypothesis tests for a given data problem.
 
