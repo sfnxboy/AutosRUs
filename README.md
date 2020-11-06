@@ -97,6 +97,12 @@ If we want to test the distribution of vehicle weights from the built-in mtcars 
 
 ```ggplot(mtcars,aes(x=wt)) + geom_density() #visualize distribution using density plot```
 
+![image](https://user-images.githubusercontent.com/68082808/98382849-bbaed300-2019-11eb-92d4-3082355270f6.png)
+
+Often times data analysts would use the Shapiro-Wilk test for normality. The shapiro.test() function requires only the numeric vector of values you wish to test. Since the p-value is greater than 0.05, we can consider the data to be normally distributed.
+
+```shapiro.test(mtcars$wt)```
+
 
 
 •	Formulate null and alternative hypothesis tests for a given data problem.
