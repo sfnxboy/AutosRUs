@@ -89,6 +89,16 @@ Its important to understand how data is categorized:
 - Interval: Numerical data spaced evenly on a scale.
 - Dichotomous: Data that is one of two possible values.
 
+When it comes to data analysis, characterizing the distribution of numerical data is as important as characterizing the different data types. If we make incorrect assumptions about the distribution of our data, our statistical results could be meaningless. In general, most basic statistical tests assume that each numerical metric follows an approximate normal distribution. When numerical data is considered to be normally distributed, the probability of any data point follows the 68-95-99.7 rule, stating that 68.27%, 95.45%, and 99.73% (effectively 100%) of the values lie within one, two, and three standard deviations of the mean, respectively.
+
+In statistics, the central limit theorem is a key concept that states if you take sufficiently large samples of data from a dataset with mean μ (mu) and standard deviation σ (sigma), then the distribution will approximate normal distribution. Therefore, if we are using relatively large sample sizes, we should expect data to become more normally distributed.
+
+If we want to test the distribution of vehicle weights from the built-in mtcars dataset, our code would be as follows:
+
+```ggplot(mtcars,aes(x=wt)) + geom_density() #visualize distribution using density plot```
+
+
+
 •	Formulate null and alternative hypothesis tests for a given data problem.
 
 •	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
