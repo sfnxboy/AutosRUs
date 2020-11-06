@@ -128,9 +128,27 @@ Regardless of the complexity of the dataset or the proposed question, hypothesis
 4. Compare p-value to the significance level.
 5. Reject (or fail to reject) the null hypothesis and generate the conclusion.
 
+Outside of statistics, you may see others refer to this process as "accepting or rejecting" the null hypothesis. While this is not entirely untrue, many statisticians believe that there is no way of making a definitive choice between either hypothesis without an infinitely large dataset. Therefore, we use p-values and significance levels to determine the probability that our observations were obtained assuming the null hypothesis.
+
 After determining which statistical analysis is most appropriate and analyzing our data, we must quantify our statistical results using probability. In our example, we are calculating probability directly; however, most statistical tests will produce probability in the form of a p-value. The **p-value**, or probability value, tells us the likelihood that we would see similar results if we tested our data again, if the null hypothesis is true. Therefore, we use the p-value to provide quantitative evidence as to which of our hypotheses are true. To determine which hypothesis is most likely to be true, we compare the p-value against a **significance level**. A significance level (also denoted as alpha or ɑ) is a predetermined cutoff for our hypothesis test. When designing our hypothesis, we would determine the significance level based on the importance of our findings. In most cases, a significance level of 0.05 is sufficient, but if our hypotheses are being used for critical decision-making (such as the performance of a drug or the durability of a helmet), we might want to use smaller cutoffs such as 0.01 or 0.001. Regardless of what significance level we select, we want to predetermine our cutoff prior to computing the p-value as to not introduce bias into our results. Refer to the following chart:
 
+![image](https://user-images.githubusercontent.com/68082808/98386904-c3bd4180-201e-11eb-9be8-eafe6afa3e23.png)
+
+
 ###	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
+
+In data analysis and statistics, an ideal dataset is one that contains measurements and results from every possible outcome, condition, or consideration. These datasets are known as a **population dataset** and contain all possible elements of a study or experiment. Often, such an exhaustive dataset is prohibitively expensive or logistically impossible to generate. In this case, we must use a **sample** or subset of the population dataset, where not all elements of a study or experiment are collected or measured.
+
+One of the most straightforward ways to characterize a sample versus its population data is to compare the mean and standard deviation of both datasets. Ideally, a sample dataset will have a similar distribution to the population data, and therefore the mean and standard deviation would be about equal. **Random sampling** is a technique in data science in which every subject or data point has an equal chance of being included in the sample. This technique increases the likelihood that even a small sample size will include individuals from each "group" within the population.
+
+The sample_n() function selects random rows from the table, which is a great way to sample data from an exhaustive dataset. This function takes two arguments, then name of the input table, and the number of rows to return.
+
+```
+population_table <- read.csv('01_Demo/used_car_data.csv',check.names = F,stringsAsFactors = F) #import used car dataset
+plt <- ggplot(population_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
+plt + geom_density() #visualize distribution using density plot
+```
+
 
 ###	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset.
 
