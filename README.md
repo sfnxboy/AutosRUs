@@ -135,13 +135,11 @@ After determining which statistical analysis is most appropriate and analyzing o
 ![image](https://user-images.githubusercontent.com/68082808/98399221-14896600-2030-11eb-8ab3-469ebf2a4353.png)
 
 
-###	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
+###	Characterize the Sample Space
 
 In data analysis and statistics, an ideal dataset is one that contains measurements and results from every possible outcome, condition, or consideration. These datasets are known as a **population dataset** and contain all possible elements of a study or experiment. Often, such an exhaustive dataset is prohibitively expensive or logistically impossible to generate. In this case, we must use a **sample** or subset of the population dataset, where not all elements of a study or experiment are collected or measured.
 
 One of the most straightforward ways to characterize a sample versus its population data is to compare the mean and standard deviation of both datasets. Ideally, a sample dataset will have a similar distribution to the population data, and therefore the mean and standard deviation would be about equal. **Random sampling** is a technique in data science in which every subject or data point has an equal chance of being included in the sample. This technique increases the likelihood that even a small sample size will include individuals from each "group" within the population.
-
-
 
 ```
 population_table <- read.csv('01_Demo/used_car_data.csv',check.names = F,stringsAsFactors = F) #import used car dataset
@@ -255,6 +253,10 @@ Due to the fact that the ANOVA model is used in many forms, the initial output o
 When using the formula statement, each independent variable will be shown as a separate row, with an additional "Residuals" row that tells us what the residual error is for our ANOVA model. For our purposes, we are only concerned with the "Pr(>F)" column, which is the same as our p-value statistic.
 
 Depending on how small our p-value is, there may be symbols on the right side that indicate which significance level the p-value is below. In this case, our p-value is 1.32 ✕ 10^-8^, which is much smaller than our assumed 0.05 percent significance level. Therefore, we would state that there is sufficient evidence to reject the null hypothesis and accept that there is a significant difference in horsepower between at least one engine type and the others.
+
+###	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
+
+In data analytics, we'll often ask the question "is there any relationship between variable A and variable B?" This concept is known in statistics as correlation. Correlation analysis is a statistical technique that identifies how strongly (or weakly) two variables are related. Correlation is quantified by calculating a correlation coefficient, and the most common correlation coefficient is the Pearson correlation coefficient. The Pearson correlation coefficient is denoted as "r" in mathematics and is used to quantify a linear relationship between two numeric variables. The Pearson correlation coefficient ranges between -1 and 1, depending on the direction of the linear relationship.
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
