@@ -165,7 +165,11 @@ By using dplyr's sample_n() function, we can create a random sample dataset from
 
 ###	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset.
 
-In statistics, we use a t-test to compate the mean of one dataset to another under a few assumptions. There are two main forms of the t-test: the **one-sample t-test**, and the **two-sample t-test**. A one sample t-test is used to determine whether there is a statistical difference between the means of a sample dataset and a hypothesized population dataset. Simply, a one sample t-test is used to test whether or not there is a statistical difference between the observed sample mean and the presumed population mean. Before we can apply any statistical test to our data, there are a few things we must confirm about our datasets:
+In statistics, we use a t-test to compate the mean of one dataset to another under a few assumptions. There are two main forms of the t-test: the one-sample t-test, and the two-sample t-test.
+
+**The One-Sample T-Test**
+
+A one sample t-test is used to determine whether there is a statistical difference between the means of a sample dataset and a hypothesized population dataset. Simply, a one sample t-test is used to test whether or not there is a statistical difference between the observed sample mean and the presumed population mean. Before we can apply any statistical test to our data, there are a few things we must confirm about our datasets:
 
 1. The input data is numerical and continuous. This is because we are testing the distribution of two datasets.
 2. The sample data was selected randomly from its population data.
@@ -173,13 +177,35 @@ In statistics, we use a t-test to compate the mean of one dataset to another und
 4. The sample size is reasonably large. Generally speaking, this means that the sample data distribution should be similar to its population data distribution.
 5. The variance of the input data should be very similar.
 
-We can perform a one-sided and a two-sided t-test in R with the t.test() method. It takes 3 notable arguments, firstly a numeric vector of sample data, the calculated mean of the population data, and a character string specifying whether the hypothesis is one-sided or two-sided.
+We can perform a one-sided and a two-sided t-test in R with the t.test() method. It takes 3 notable arguments, firstly a numeric vector of sample data, the calculated mean of the population data, and a character string specifying whether the hypothesis is one-sided or two-sided. The default method is two-sided.
 
 ```t.test(log10(sample_table$Miles_Driven),mu=mean(log10(population_table$Miles_Driven))) #compare sample versus population means```
 
+![image](https://user-images.githubusercontent.com/68082808/98483486-d24e5900-21d6-11eb-8be6-9fb97955f84c.png)
 
 
-Assuming our significance level was the common 0.05 percent, our p-value is above our significance level. Therefore, we do not have sufficient evidence to reject the null hypothesis, and we would state that the two means are statistically similar.
+Assuming our significance level was the common 0.05 percent, our p-value is below our significance level. Therefore, we have sufficient evidence to reject the null hypothesis, and we would state that the two means are statistically different. If our significance level was the common 0.05 percent, our p-value was above our significance level, we would not have sufficient evidence to reject the null hypothesis, and we would state that the two means are statistically similar.
+
+
+**The Two-Sample T-Test**
+
+The two-sample t-Test determines whether the means of two samples are statistically different. In other words, a two-sample t-Test is used to test whether or not there is a statistical difference between the observed sample means of two datasets. Before we can apply any statistical test to our data, there are a few things we must confirm about our datasets:
+
+1. The input data is numerical and continuous.
+2. Each sample data was selected randomly from the population data.
+3. The input data is considered to be normally distributed.
+4. The sample size is reasonably large. Generally speaking, this means that the sample data distribution should be similar to its population data distribution.
+5. The variance of the input data should be very similar.
+
+We will first produce our two samples using the following code. Afterwhich we will use the t.test() function again to take a two-sided t-test.
+
+```
+# Two-tailed test
+sample_table <- population_table %>% sample_n(50) #generate 50 randomly sampled data points
+sample_table2 <- population_table %>% sample_n(50) #generate another 50 randomly sampled data points
+t.test(log10(sample_table$Miles_Driven),log10(sample_table2$Miles_Driven)) #compare means of two samples```
+
+
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
