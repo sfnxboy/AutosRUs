@@ -203,9 +203,29 @@ We will first produce our two samples using the following code. Afterwhich we wi
 # Two-tailed test
 sample_table <- population_table %>% sample_n(50) #generate 50 randomly sampled data points
 sample_table2 <- population_table %>% sample_n(50) #generate another 50 randomly sampled data points
-t.test(log10(sample_table$Miles_Driven),log10(sample_table2$Miles_Driven)) #compare means of two samples```
+t.test(log10(sample_table$Miles_Driven),log10(sample_table2$Miles_Driven)) #compare means of two samples
+```
+
+![image](https://user-images.githubusercontent.com/68082808/98483820-3a9e3a00-21d9-11eb-8f95-aa0339018e10.png)
+
+The p-value is above the assumed significance level of 0.05. Therefore, we would state that there is not enough evidence to reject the null hypothesis and we can confirm our two samples are not statistically different. Essentially, we fail to reject the null hypothesis.
 
 
+**The Pair T-Test**
+Two-sample t-tests can be used to compare two samples from different populations, this is known as a pair t-test because we pair observations in one dataset with observations in another. For instance, we can use the pair t-test to compare measurements on the same subjects across a single span of time, such as fuel efficiency before and after an oil change, as well as to compare different meaasures of measurement, such as testing tire pressure using two different tire pressure gauges. The biggest difference between paired and unpaired t-tests is how the means are calculated. In an unpaired t-test, the means are calculated by adding up all observations in a dataset, and dividing by the number of data points. In a paired t-test, the means are determined from the difference between each paired observation. As a result of the new mean calculations, our paired t-test hypotheses will be slightly different. We will be testing to see if the difference between our paired observations is, or is not, equal to zero.
+
+First we will generate two data samples, one selecting data points where the year is 1999, and the other selecting data points where the year is 2008. Now that we have our paired datasets, we can use a paired t-test to determine if there is a statistical difference in overall highway fuel efficiency between vehicles manufactured in 1999 versus 2008. In other words, we are testing our null hypothesis—that the overall difference is zero. Using our t.test() function in R, our code would be as follows:
+
+```
+mpg_data <- read.csv('01_Demo/mpg_modified.csv') #import dataset
+mpg_1999 <- mpg_data %>% filter(year==1999) #select only data points where the year is 1999
+mpg_2008 <- mpg_data %>% filter(year==2008) #select only data points where the year is 2008
+t.test(mpg_1999$hwy,mpg_2008$hwy,paired = T) #compare the mean difference between two samples
+```
+
+
+
+The p-value is above the assumed significance level. Therefore, we would state that there is not enough evidence to reject the null hypothesis and there is no overall difference in fuel efficiency between vehicles manufactured in 1999 versus 2008.
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
