@@ -223,9 +223,33 @@ mpg_2008 <- mpg_data %>% filter(year==2008) #select only data points where the y
 t.test(mpg_1999$hwy,mpg_2008$hwy,paired = T) #compare the mean difference between two samples
 ```
 
-
+![image](https://user-images.githubusercontent.com/68082808/98484272-3c1d3180-21dc-11eb-912c-147a8cc0111c.png)
 
 The p-value is above the assumed significance level. Therefore, we would state that there is not enough evidence to reject the null hypothesis and there is no overall difference in fuel efficiency between vehicles manufactured in 1999 versus 2008.
+
+
+**The ANOVA Test**
+
+When dealing with large real-world numerical data, we're often interested in comparing the means across more than two samples or groups. The most straightforward way to do this is to use the **analysis of variance (ANOVA) test**, which is used to compare the means of a continuous numerical variable across a number of groups (or factors in R). Depending on your dataset and questions you wish to answer, an ANOVA can be used in multiple ways. For the purposes of this course, we'll concentrate on two different types of ANOVA tests. A **one-way ANOVA** is used to test the means of a single dependent variable across a single independent variable with multiple groups. (e.g., fuel efficiency of different cars based on vehicle class). A **two-way ANOVA** does the same thing, but for two different independent variables (e.g., vehicle braking distance based on weather conditions and transmission type). The statisitcal hypothesis of an ANOVA test are the same, we either test to see if the mean of all groups are equal, or if at least one of the means is different from the rest.
+
+Additionally, both ANOVA tests have assumptions about the input data that must be validated prior to using the statistical test:
+
+1. The dependent variable is numerical and continuous, and the independent variables are categorical.
+2. The dependent variable is considered to be normally distributed.
+3. The variance among each group should be very similar.
+
+R's aov() function can perform either a one-way or a two-way ANOVA test. Unlike the t.test() function, where each group was a separate numeric vector, the aov() function expects that all of the observations and grouping information are contained within a single data frame. Once we have our cleaned and labeled data frame, we're ready to perform our ANOVA test using the aov() function.
+
+```
+mtcars_filt <- mtcars[,c("hp","cyl")] #filter columns from mtcars dataset
+mtcars_filt$cyl <- factor(mtcars_filt$cyl) #convert numeric column to factor
+aov(hp ~ cyl,data=mtcars_filt) #compare means across multiple levels
+```
+
+Due to the fact that the ANOVA model is used in many forms, the initial output of our aov() function does not contain our p-values. To retrieve our p-values, we have to wrap our aov()function in a summary() function as follows:
+
+```summary(aov(hp ~ cyl,data=mtcars_filt))```
+
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
