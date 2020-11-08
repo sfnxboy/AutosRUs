@@ -246,10 +246,15 @@ mtcars_filt$cyl <- factor(mtcars_filt$cyl) #convert numeric column to factor
 aov(hp ~ cyl,data=mtcars_filt) #compare means across multiple levels
 ```
 
+![image](https://user-images.githubusercontent.com/68082808/98484560-6e2f9300-21de-11eb-9a94-49832ad63011.png)
+
 Due to the fact that the ANOVA model is used in many forms, the initial output of our aov() function does not contain our p-values. To retrieve our p-values, we have to wrap our aov()function in a summary() function as follows:
 
 ```summary(aov(hp ~ cyl,data=mtcars_filt))```
 
+When using the formula statement, each independent variable will be shown as a separate row, with an additional "Residuals" row that tells us what the residual error is for our ANOVA model. For our purposes, we are only concerned with the "Pr(>F)" column, which is the same as our p-value statistic.
+
+Depending on how small our p-value is, there may be symbols on the right side that indicate which significance level the p-value is below. In this case, our p-value is 1.32 ✕ 10^-8^, which is much smaller than our assumed 0.05 percent significance level. Therefore, we would state that there is sufficient evidence to reject the null hypothesis and accept that there is a significant difference in horsepower between at least one engine type and the others.
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
