@@ -1,5 +1,7 @@
 # AutosRUs
 
+I credit Columbia Engineering for the notes taken in the Process section of ReadMe.md.
+
 ## Overview
 In this project we take a focus on statistics, and the programming language R. Statistics is a cornerstone of data analytics, and helps us to contextual our data. Statistics take a critical role when it comes to making important decisions, and this is the case in any field. In the professional world, those who are familiar with statistics tend to be the go to people within a company when it comes to the decision making, troubleshooting, and resource planning. In this project we will review statistics and regression models, as well as explore more advanced statistical models commonly used in data analytics. Lastly, we will design and interpret statistical studies. The perfect tool to use for data analysis other than Python, is the R language, a language made by data analysts for data analysts. R was developed for data manipulation, statistical analysis, and visualization. The basics of R include reading a dataset, manipulating the data, performing calculation, and creating data visualizations with two dimensional plots. With all of its benefits, the biggest drawback of R is its licensing. R, as well as most of its libraries, are licensed as General Public license, as in any program or model using R will be forcibly be open source. Often time this will not be an issue because a data analyst plans on publishing their findings anyway. However, when working with a company with intellectual property, or propriety data and programs this can be an issue. In these cases, a company may use R for internal analysis, and use Python for any application or script that contains propriety information. Nonetheless, R is still a highly valuable programming language for data analysis, and is used by data professionals at all levels across all fields. We will be using the IDE RStudio to help us design and test R scripts. Similarly to Jupyter Notebook, RStudio enables programmers to test their code line by line to allow users to troubleshoot any problems efficiently and easily.
 
@@ -356,9 +358,9 @@ tbl <- table(mpg$class,mpg$year) #generate contingency table
 chisq.test(tbl) #compare categorical distributions
 ```
 
+![image](https://user-images.githubusercontent.com/68082808/98496691-35a8ad00-2210-11eb-87b6-25d856c8e4b3.png)
 
-
-
+The p-value is above the assumed significance level. Therefore, we would state that there is not enough evidence to reject the null hypothesis, and there is no difference in the distribution of vehicle class across 1999 and 2008 from the mpg dataset. If you run the code you will notice RStudio returns a warning message. The chi-squared warning message is due to the small sample size. Because the p-value is so large, we are not too concerned that our interpretation may be incorrect. Despite having no quantitative input, the chi-squared test enables data scientists to quantify the distribution of categorical variables. Although this test can be applied to more groups and larger datasets, it does have a limit.  Increasing the number of groups also increases the likelihood that insignificant changes will incorrectly be considered significant. Therefore, it's important to keep the number of unique values and groups relatively low. A good rule of thumb is to keep the number of unique values and groups lower than 20, which means the degrees of freedom (df in the output) is less than or equal to 19.
 
 ###	Identify key characteristics of A/B and A/A testing.
 
