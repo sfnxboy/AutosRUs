@@ -254,7 +254,7 @@ When using the formula statement, each independent variable will be shown as a s
 
 Depending on how small our p-value is, there may be symbols on the right side that indicate which significance level the p-value is below. In this case, our p-value is 1.32 ✕ 10^-8^, which is much smaller than our assumed 0.05 percent significance level. Therefore, we would state that there is sufficient evidence to reject the null hypothesis and accept that there is a significant difference in horsepower between at least one engine type and the others.
 
-###	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
+### Find a relationship between two variables with correlation analysis.
 
 In data analytics, we'll often ask the question "is there any relationship between variable A and variable B?" This concept is known in statistics as correlation. Correlation analysis is a statistical technique that identifies how strongly (or weakly) two variables are related. Correlation is quantified by calculating a correlation coefficient, and the most common correlation coefficient is the Pearson correlation coefficient. The Pearson correlation coefficient is denoted as "r" in mathematics and is used to quantify a linear relationship between two numeric variables. The Pearson correlation coefficient ranges between -1 and 1, depending on the direction of the linear relationship.
 
@@ -276,6 +276,31 @@ From our correlation analysis, we have determined that the r-value between horse
 used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Driven")]) #convert data frame into numeric matrix
 cor(used_matrix)
 ```
+
+![image](https://user-images.githubusercontent.com/68082808/98488510-9d9ec980-21f7-11eb-94f7-9a5910b81f3f.png)
+
+If we look at the correlation matrix using either rows or columns, we can identify pairs of variables with strong correlation (such as selling price versus present price), or no correlation (like our previous example of miles driven versus selling price).The correlation matrix is a very powerful data exploration tool that allows an analyst to scan large numerical datasets for variables of interest. Once the variables of interest have been identified, the analyst can move on to more rigorous data analysis and hypothesis testing.
+
+###	Implement and evaluate simple linear regression and multiple linear regression models for a given dataset.
+
+**Linear regression** is a statistical model that is used to predict a continuous dependent variable based on one or more independent variables fitted to the equation of a line. A linear regression analysis calculates the slope and y-intercept values that minimize the overall distance between each data point from the linear model. There are two basic types of linear regression:
+**Simple linear regression** builds a linear regression model with one independent variable.
+**Mulitple linear regression** builds a linear regression model with two or more independent variables.
+
+Linear regression may be used as a predictive modelling tool, where future observations and measurements can be extrapolated from a linear model. It can also be used as an exploratory tool to quantify and measure the variability of two correlated variables. A linear regression model approximates the most data points accurately if two variables are strongly correlated. There is still a contrast between correlation analysis and linear regression analysis, in correlation analysis we ask whether a relationship exists between two variables, linear regression asks if we can predict values for variable A useing a linear model and variable B. Linear regression tets whether the slope of the linear model is zero or not. If there is no significant linear relationship, each dependent value would be determined by random chance and error. Therfore, our linear model would be a flat line with a slope of zero! 
+
+To quantify how well our linear model can be used to predict future observations, our linear regression functions will calculate an r-squared value. The r-squared (r2) value is also known as the coefficient of determination and represents how well the regression model approximates real-world data points. In most cases, the r-squared value will range between 0 and 1 and can be used as a probability metric to determine the likelihood that future data points will fit the linear model. By combining the p-value of our hypothesis test with the r-squared value, the linear regression model becomes a powerful statistics tool that both quantifies a relationship between variables and provides a meaningful model to be used in any decision-making process.
+
+The lm() function fits linear models to carry out linear regression, as well as more advanced statistical analysis. Similarly to the t-test, there are a few conditions about our input data that must be met before we can perform any statistical analysis.
+
+1. The input data is numerical and continuous
+2. The input data should follow a linear pattern
+3. There is variability in the independent x variable such that there must be more than one observation in the x-axis and they must be of different values
+4. The residual error (the distance from each data point to the line) should be normally distributed
+
+In most real world cases we can find to expect our data meets the fourth method. The following code is a snapshot of our linear regression model:
+
+```summary(lm(qsec~hp,mtcars)) #summarize linear model```
 
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
