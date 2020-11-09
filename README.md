@@ -268,6 +268,16 @@ The cor() function quantifies the strength of the correlation between the two va
 
 ```cor(mtcars$hp,mtcars$qsec) #calculate correlation coefficient```
 
+![image](https://user-images.githubusercontent.com/68082808/98488150-86f77300-21f5-11eb-824b-fd36f4fb1c8e.png)
+
+From our correlation analysis, we have determined that the r-value between horsepower and quarter-mile time is -0.71, which we can conclude to be a strong negative correlation. For the next example I'll reuse the used_cars dataset, our code will look at follows: 
+
+```
+used_cars <- read.csv('used_car_data.csv',stringsAsFactors = F) #read in dataset
+plt <- ggplot(used_cars,aes(x=Miles_Driven,y=Selling_Price)) #import dataset into ggplot2
+plt + geom_point() #create a scatter plot
+```
+
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
 ###	Identify key characteristics of A/B and A/A testing.
