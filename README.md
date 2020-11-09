@@ -441,3 +441,6 @@ Whats more important than knowing how the math works or knowing how to program i
 - Are the multiple categorical variables tightly linked in a dataset? Are the distributions of the different categorical values equal? We would use a chi-squared test.
 
 In contrast, researchers can design their own study to answer their own specific questions. In this case, the data types and size of the dataset will be directly reflective of how complicated their hypotheses are, and what statistical analyses are required to answer the question. If we collect and measure the data ourselves, or if the data has been curated from a previous dataset, statistical tests can help us provide quantitative interpretation to the results.
+
+
+[Back To Top](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#autosrus)
