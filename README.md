@@ -326,10 +326,30 @@ Multiple linear regression is a statistical model that extends the scope and fle
 
 In R, our multiple linear regression statement is as follows:
 
-```lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars) #generate multiple linear regression model```
+```summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)) #generate summary statistics```
+
+![image](https://user-images.githubusercontent.com/68082808/98495679-bf0ab000-220d-11eb-822b-9ae17880e427.png)
+
+In the summary output, each Pr(>|t|) value represents the probability that each coefficient contributes a random amount of variance to the linear model. According to our results, vehicle weight and horsepower (as well as intercept) are statistically unlikely to provide random amounts of variance to the linear model. In other words the vehicle weight and horsepower have a significant impact on quarter-mile race time. When an intercept is statistically significant, it means there are other variables and factors that contribute to the variation in quarter-mile time that have not been included in our model. These variables may or may not be within our dataset and may still need to be collected or observed.
+
+Although the multiple linear regression model is far better at predicting our current dataset, the lack of significant variables is evidence of overfitting. Overfitting means that the performance of a model performs well with a current dataset, but fails to generalize and predict future data correctly.
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
+Even though categorical data may not require an instrument to measure, it can be just as informative as numerical data. One common form of categorical data is frequency data, where we record how often something was observed within a single variable. For example, in the mpg dataset, if we were to count up the number of vehicles for each vehicle class, the output would be a form of frequency data. In data science, we'll often compare frequency data across another dichotomous factor such as gender, A/B groups, member/non-member, and so on. In these cases, we may ask ourselves, "Is there a difference in frequency between our first and second groups?" To test this question, we can perform a chi-squared test. The **chi-squared** test is used to compare the distribution of frequencies across two groups and tests whether or not there is a difference in the frequency distribution between both groups. 
+
+Before one can perform their chi-squared analysis they much ensure that the datasets meet these conditions:
+
+1. Each subject within a group contributes to only one frequency. In other words, the sum of all frequencies equals the total number of subjects in a dataset.
+2. Each unique value has an equal probability of being observed.
+3. There is a minimum of five observed instances for every unique value for a 2x2 chi-squared table.
+4. For a larger chi-squared table, there is at least one observation for every unique value and at least 80% of all unique values have five or more observations.
+
+In R, we'll compute our chi-squared test using the chisq.test() function. The most straightforward implementation of chisq.test() function is passing the function to a **contingency table**. A contingency table is another name for a frequency table produced using R's table() function. R's table() function does all the heavy lifting for us by calculating frequencies across factors. Say we wanted to test if there is a statistical difference in the distributions of vehicle class between the years 1999 and 2008 from the mpg dataset, we would build a contingency table as follows: 
+
+```table(mpg$class,mpg$year) #generate contingency table```
+
+
 ###	Identify key characteristics of A/B and A/A testing.
 
-###	Determine the most appropriate statistical test for a given hypothesis and dataset.
+###	Determine the most appropriate statistical test for a given hypothesis and dataset. 
