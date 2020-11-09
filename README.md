@@ -10,6 +10,9 @@ In this project I will be working with a mock company, AutosRUs, who have realiz
 The R language has a large community, and great number of supportive documentation. Check out this site for more information on the methods used in this project https://www.rdocumentation.org/. For documentation on the tidyverse library check out this source, https://www.tidyverse.org/. 
 
 ## Process
+
+[Load, clean up, and reshape datasets using tidyverse in R](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#load-clean-up-and-reshape-datasets-using-tidyverse-in-r)
+
 ###	Load, clean up, and reshape datasets using tidyverse in R.
 
 In addition to the native statistical functions, there are many other useful data transformation and modelling libraries, such as the tidyverse package, that simplify the process of ETL and visualizations.
