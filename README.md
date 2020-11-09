@@ -9,6 +9,48 @@ In this project I will be working with a mock company, AutosRUs, who have realiz
 
 The R language has a large community, and great number of supportive documentation. Check out this site for more information on the methods used in this project https://www.rdocumentation.org/. For documentation on the tidyverse library check out this source, https://www.tidyverse.org/. 
 
+## MechaCar Statistical Analysis
+
+### Linear Regression to Predict MPG
+The MechaCar_mpg.csv file contains mpg test results for 50 prototype MachaCars. The prototypes were produced using multiple design specifications to identify ideal vehicle performance. Multiple metrics, such as vehicle length, vehicle weight, spoiler angle, ground clearance, and drivetrain were calculated for each vehicle. The following code generates a multiple linear regression model.
+
+```
+# read.csv method allows RStudio to extract data from .csv files
+MechaCar <- read.csv(file='MechaCar_Statistical_Analysis/MechaCar_mpg.csv',check.names=F,stringsAsFactors = F)
+
+# Linear Regression to Predict MPG
+lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,data=MechaCar)
+summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,data=MechaCar))
+```
+
+![image](https://user-images.githubusercontent.com/68082808/98580865-a8f10400-228e-11eb-8745-b00e252228de.png)
+
+Our linear regression model indicated the r-squared value is 0.7149, meaning almost three quarters of all mpg predictions will be accurate when using this linear model. Furthermore, assuming a significance level of 0.05, the p-value of the linear regression analysis is 5.35e-11, which is significantly smaller than our assumed significance level, indicates that there is sufficient evidence to **reject** our null hypothesis. In other words, the slope of our linear model is not zero such that there is a linear relationship between the variable mpg and the independent variables.
+
+### Visualizations for the Trip Analysis
+
+The MechaCar Suspension_Coil.csv dataset contains the results from multiple production lots. In this dataset, the weight capacities of multiple suspension coils were tested to determine if the manufacturing process is consistent across production lots.
+
+The following code determines summary metrics for the PSI column:
+
+```
+Suspension_Coil <- read.csv(file='MechaCar_Statistical_Analysis/Suspension_Coil.csv',check.names=F,stringsAsFactors = F)
+total_summary <- Suspension_Coil %>% summarize(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI), .groups = 'keep') #create summary table with multiple columns
+```
+
+![image](https://user-images.githubusercontent.com/68082808/98585602-89a9a500-2295-11eb-8090-131a06a6abcd.png)
+
+The following code determines summary metrics for the PSI column for each lot:
+
+```lot_summary  <- Suspension_Coil %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI),Median=median(PSI),Variance=var(PSI),SD=sd(PSI), .groups = 'keep') #create summary table with multiple columns```
+
+![image](https://user-images.githubusercontent.com/68082808/98585838-ddb48980-2295-11eb-9df6-4821b5de9696.png)
+
+The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed 100 pounds per square inch. According to the design specifications of all lots in total, the current manufacturing data satisfies the specifications. However if one looks at each lot in particular, Lot 3 has a variance of 170.29 pounds per square inch. Variance is an indicator of spread between data points, in this context the data points exceed 100 pounds per square inch.
+
+### T-Tests on Suspension Coils
+
+
 ## Process
 
 [Load, clean up, and reshape datasets using tidyverse in R](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#load-clean-up-and-reshape-datasets-using-tidyverse-in-r)
