@@ -302,6 +302,26 @@ In most real world cases we can find to expect our data meets the fourth method.
 
 ```summary(lm(qsec~hp,mtcars)) #summarize linear model```
 
+![image](https://user-images.githubusercontent.com/68082808/98489462-0a1bc780-21fc-11eb-9ddf-01aa1c2c041b.png)
+
+The p-value of our linear regression analysis is 5.766e-06, which is significantly smaller than our assumed significance level of 0.05%. Furthermore, the r-squared value is about 0.50, which translates to roughly 50% of all quarter-mile time predictions will be correct when using this linear model. Compared to the Pearson correlation coefficient between quarter-mile race time and horsepower of -0.71, we can confirm our r-squared value is approximately the square of our r-value. We can state that there is sufficient evidence to reject our null hypothesis, the slope of our linear model is not zero.
+
+We can plot the variables and layer the linear model using ggplot2. The code would look as follows:
+
+```
+model <- lm(qsec ~ hp,mtcars) #create linear model
+yvals <- model$coefficients['hp']*mtcars$hp +
+  model$coefficients['(Intercept)'] #determine y-axis values from linear model
+plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
+plt + geom_point() + geom_line(aes(y=yvals), color = "red") #plot scatter and linear model
+```
+
+
+
+Using our visualization in combination with our calculated p-value and r-squared value, we have determined that there is a significant relationship between horsepower and quarter-mile time.
+
+Although the relationship between both variables is statistically significant, this linear model is not ideal. According to the calculated r-squared value, using only quarter-mile time to predict horsepower is roughly as accurate as guessing using a coin toss. In other words, the variability we observed within our horsepower data must come from multiple sources of variance. To accurately predict future horsepower observations, we need to use a more robust model.
+
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
