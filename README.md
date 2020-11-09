@@ -13,6 +13,26 @@ The R language has a large community, and great number of supportive documentati
 
 [Load, clean up, and reshape datasets using tidyverse in R](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#load-clean-up-and-reshape-datasets-using-tidyverse-in-r)
 
+[Generate and interpret more complex plots such as boxplots and heatmaps using ggplot2](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#generate-and-interpret-more-complex-plots-such-as-boxplots-and-heatmaps-using-ggplot2)
+
+[Plot and identify distribution characteristics of a given dataset](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#plot-and-identify-distribution-characteristics-of-a-given-dataset)
+
+[Formulate null and alternative hypothesis tests for a given data problem](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#formulate-null-and-alternative-hypothesis-tests-for-a-given-data-problem)
+
+[Characterize the Sample Space](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#characterize-the-sample-space)
+
+[Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#implement-and-evaluate-the-one-sample-t-tests-two-sample-t-tests-and-analysis-of-variance-anova-models-for-a-given-dataset)
+
+[Find a relationship between two variables with correlation analysis](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#find-a-relationship-between-two-variables-with-correlation-analysis)
+
+[Implement and evaluate simple linear regression and multiple linear regression models for a given dataset](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#implement-and-evaluate-simple-linear-regression-and-multiple-linear-regression-models-for-a-given-dataset)
+
+[Implement and evaluate a chi-squared test for a given dataset](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#implement-and-evaluate-a-chi-squared-test-for-a-given-dataset)
+
+[Identify key characteristics of A/B and A/A testing](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#identify-key-characteristics-of-ab-and-aa-testing)
+
+[Determine the most appropriate statistical test for a given hypothesis and dataset](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#determine-the-most-appropriate-statistical-test-for-a-given-hypothesis-and-dataset)
+
 ###	Load, clean up, and reshape datasets using tidyverse in R.
 
 In addition to the native statistical functions, there are many other useful data transformation and modelling libraries, such as the tidyverse package, that simplify the process of ETL and visualizations.
