@@ -36,10 +36,10 @@ library(tidyverse)
 demo_table <- demo_table %>% mutate(Mileage_per_Year=Total_Miles/(2020-Year),IsActive=TRUE)
 
 # Create a summary table using group_by(), a method which groups by a factor
-# The summarize function ceates columns in our summary dataframe
+# The summarize function creates columns in our summary dataframe
 summarize_demo <- demo_table2 %>% group_by(condition) %>% summarize(Mean_Mileage=mean(odometer), .groups = 'keep')
 
-# gather() can be used to simplify overcomplicated data frames so that it may be compatible with other methods
+# gather() can be used to simplify over complicated data frames so that it may be compatible with other methods
 demo_table3 <- read.csv('demo2.csv',check.names = F,stringsAsFactors = F)
 long_table <- gather(demo_table3,key="Metric",value="Score",buying_price:popularity)
 
@@ -123,3 +123,62 @@ plt + geom_boxplot() + facet_wrap(vars(MPG_Type)) + #create multiple boxplots, o
 # Qualitative test for normality, geo_density() plots distribution
 ggplot(mtcars,aes(x=wt)) + geom_density() #visualize distribution using density plot
 
+
+# Select random rows from a table with sample_n()
+population_table <- read.csv('01_Demo/used_car_data.csv',check.names = F,stringsAsFactors = F) #import used car dataset
+plt <- ggplot(population_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
+plt + geom_density() #visualize distribution using density plot
+
+sample_table <- population_table %>% sample_n(50) #randomly sample 50 data points
+plt <- ggplot(sample_table,aes(x=log10(Miles_Driven))) #import dataset into ggplot2
+plt + geom_density() #visualize distribution using density plot
+
+# One-tailed test
+t.test(log10(sample_table$Miles_Driven),mu=mean(log10(population_table$Miles_Driven))) #compare sample versus population means
+
+# Two-tailed test
+sample_table <- population_table %>% sample_n(50) #generate 50 randomly sampled data points
+sample_table2 <- population_table %>% sample_n(50) #generate another 50 randomly sampled data points
+t.test(log10(sample_table$Miles_Driven),log10(sample_table2$Miles_Driven)) #compare means of two samples
+
+# Pair T-Test
+mpg_data <- read.csv('01_Demo/mpg_modified.csv') #import dataset
+mpg_1999 <- mpg_data %>% filter(year==1999) #select only data points where the year is 1999
+mpg_2008 <- mpg_data %>% filter(year==2008) #select only data points where the year is 2008
+t.test(mpg_1999$hwy,mpg_2008$hwy,paired = T) #compare the mean difference between two samples
+
+mtcars_filt <- mtcars[,c("hp","cyl")] #filter columns from mtcars dataset
+mtcars_filt$cyl <- factor(mtcars_filt$cyl) #convert numeric column to factor
+aov(hp ~ cyl,data=mtcars_filt) #compare means across multiple levels
+summary(aov(hp ~ cyl,data=mtcars_filt))
+
+
+# Correlation
+
+plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
+plt + geom_point() #create scatter plot
+cor(mtcars$hp,mtcars$qsec) #calculate correlation coefficient
+
+used_cars <- read.csv('used_car_data.csv',stringsAsFactors = F) #read in dataset
+plt <- ggplot(used_cars,aes(x=Miles_Driven,y=Selling_Price)) #import dataset into ggplot2
+plt + geom_point() #create a scatter plot
+cor(used_cars$Miles_Driven,used_cars$Selling_Price) #calculate correlation coefficient
+used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Driven")]) #convert data frame into numeric matrix
+cor(used_matrix)
+
+# Linear Regression
+lm(qsec~hp,mtcars) #summarize linear model
+
+model <- lm(qsec ~ hp,mtcars) #create linear model
+yvals <- model$coefficients['hp']*mtcars$hp +
+  model$coefficients['(Intercept)'] #determine y-axis values from linear model
+plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
+plt + geom_point() + geom_line(aes(y=yvals), color = "red") #plot scatter and linear model
+
+lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars) #generate multiple linear regression model
+summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)) #generate summary statistics
+
+# Chi-squared test
+table(mpg$class,mpg$year) #generate contingency table
+tbl <- table(mpg$class,mpg$year) #generate contingency table
+chisq.test(tbl) #compare categorical distributions
