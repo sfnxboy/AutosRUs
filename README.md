@@ -258,11 +258,15 @@ Depending on how small our p-value is, there may be symbols on the right side th
 
 In data analytics, we'll often ask the question "is there any relationship between variable A and variable B?" This concept is known in statistics as correlation. Correlation analysis is a statistical technique that identifies how strongly (or weakly) two variables are related. Correlation is quantified by calculating a correlation coefficient, and the most common correlation coefficient is the Pearson correlation coefficient. The Pearson correlation coefficient is denoted as "r" in mathematics and is used to quantify a linear relationship between two numeric variables. The Pearson correlation coefficient ranges between -1 and 1, depending on the direction of the linear relationship.
 
-![image](https://user-images.githubusercontent.com/68082808/98487901-d89efe00-21f3-11eb-83dd-a7ec39a6c959.png)
+![image](https://user-images.githubusercontent.com/68082808/98488102-3bdd6000-21f5-11eb-9a25-f7caf104d84b.png)
 
 Lets plot the horsepower variable and the quarter-mile time and observe any general correlation between the two.
 
 ![image](https://user-images.githubusercontent.com/68082808/98488048-ef922000-21f4-11eb-869a-d841c3d6becf.png)
+
+The cor() function quantifies the strength of the correlation between the two variables.
+
+```cor(mtcars$hp,mtcars$qsec) #calculate correlation coefficient```
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
