@@ -33,7 +33,7 @@ The R language has a large community, and great number of supportive documentati
 
 [Determine the most appropriate statistical test for a given hypothesis and dataset](https://github.com/sfnxboy/AutosRUs/blob/main/README.md#determine-the-most-appropriate-statistical-test-for-a-given-hypothesis-and-dataset)
 
-###	Load, clean up, and reshape datasets using tidyverse in R.
+###	Load, clean up, and reshape datasets using tidyverse in R
 
 In addition to the native statistical functions, there are many other useful data transformation and modelling libraries, such as the tidyverse package, that simplify the process of ETL and visualizations.
 To install the tidyverse package, enter the following code into RStudio's Console: ```install.packages("tidyverse")```.
@@ -76,7 +76,7 @@ spread() can be used interchangeably with gather(). spread() spreads a key-value
 ```wide_table <- long_table %>% spread(key="Metric",value="Score")```
 
 
-###	Generate and interpret more complex plots such as boxplots and heatmaps using ggplot2.
+###	Generate and interpret more complex plots such as boxplots and heatmaps using ggplot2
 
 Bar Plot
 ```
@@ -105,7 +105,7 @@ plt + geom_tile() + labs(x="Model",y="Vehicle Year",fill="Mean Highway (MPG)") +
   theme(axis.text.x = element_text(angle=90,hjust=1,vjust=.5)) #rotate x-axis labels 90 degrees
 ```
 
-###	Plot and identify distribution characteristics of a given dataset.
+###	Plot and identify distribution characteristics of a given dataset
 
 Its important to understand how data is categorized:
 - Continuous: Numerical data that can be infinitely precise
@@ -138,7 +138,7 @@ If our dataset is smaller, or the skewness does impact the overall shape of our 
 - Resample or regenerate data if we think that the data might not be representative of the original conditions or dataset.
 - Transform our data values by normalization, using another numerical variable, or by transforming the data using an operator. The concept of transforming skewed data is very popular with scientists who deal with datasets where values can differ by orders of magnitude. One of the easiest means of transforming data is using a log-transform, where each value in the numeric dataset is transformed taking either natural log, or log10. By using a log-transformation, the effects of extreme values are reduced, and this transformation can help make each distribution tail more symmetrical.
 
-###	Formulate null and alternative hypothesis tests for a given data problem.
+###	Formulate null and alternative hypothesis tests for a given data problem
 
 Although data collection and research are important, the backbone of the scientific method is hypothesis testing. Hypotheses are utilized by the scientific method to help narrow the scope of research and testing as well as provide a clear outcome of our results. Without generating a set of hypotheses, it becomes exponentially more difficult to quantify results and provide measurable outcomes to our analyses. As data analysts, it's our job to match a set of hypotheses to an appropriate statistical test to ensure that results are interpreted correctly. In other words, we use statistical hypothesis testing to determine which of our hypotheses are most likely to be true. There are two types of statistical hypothesis:
 
@@ -186,7 +186,7 @@ plt + geom_density() #visualize distribution using density plot
 By using dplyr's sample_n() function, we can create a random sample dataset from our population data that contains minimal bias and (ideally) represents the population data. Depending on the size of the population data, we may need to also adjust the size argument in our sample_n() function to ensure that our sample data is representative of the underlying population data. There are two basic ways to check that our sample data is representative of the underlying population: a qualitative assessment of each density plot or a quantitative statistical test such as the one-sample t-test.
 
 
-###	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset.
+###	Implement and evaluate the one-sample t-Tests, two-sample t-Tests, and analysis of variance (ANOVA) models for a given dataset
 
 In statistics, we use a t-test to compate the mean of one dataset to another under a few assumptions. There are two main forms of the t-test: the one-sample t-test, and the two-sample t-test.
 
@@ -279,7 +279,7 @@ When using the formula statement, each independent variable will be shown as a s
 
 Depending on how small our p-value is, there may be symbols on the right side that indicate which significance level the p-value is below. In this case, our p-value is 1.32 ✕ 10^-8^, which is much smaller than our assumed 0.05 percent significance level. Therefore, we would state that there is sufficient evidence to reject the null hypothesis and accept that there is a significant difference in horsepower between at least one engine type and the others.
 
-### Find a relationship between two variables with correlation analysis.
+### Find a relationship between two variables with correlation analysis
 
 In data analytics, we'll often ask the question "is there any relationship between variable A and variable B?" This concept is known in statistics as correlation. Correlation analysis is a statistical technique that identifies how strongly (or weakly) two variables are related. Correlation is quantified by calculating a correlation coefficient, and the most common correlation coefficient is the Pearson correlation coefficient. The Pearson correlation coefficient is denoted as "r" in mathematics and is used to quantify a linear relationship between two numeric variables. The Pearson correlation coefficient ranges between -1 and 1, depending on the direction of the linear relationship.
 
@@ -359,7 +359,7 @@ In the summary output, each Pr(>|t|) value represents the probability that each 
 
 Although the multiple linear regression model is far better at predicting our current dataset, the lack of significant variables is evidence of overfitting. Overfitting means that the performance of a model performs well with a current dataset, but fails to generalize and predict future data correctly.
 
-###	Implement and evaluate a chi-squared test for a given dataset.
+###	Implement and evaluate a chi-squared test for a given dataset
 
 Even though categorical data may not require an instrument to measure, it can be just as informative as numerical data. One common form of categorical data is frequency data, where we record how often something was observed within a single variable. For example, in the mpg dataset, if we were to count up the number of vehicles for each vehicle class, the output would be a form of frequency data. In data science, we'll often compare frequency data across another dichotomous factor such as gender, A/B groups, member/non-member, and so on. In these cases, we may ask ourselves, "Is there a difference in frequency between our first and second groups?" To test this question, we can perform a chi-squared test. The **chi-squared** test is used to compare the distribution of frequencies across two groups and tests whether or not there is a difference in the frequency distribution between both groups. 
 
@@ -385,7 +385,7 @@ chisq.test(tbl) #compare categorical distributions
 
 The p-value is above the assumed significance level. Therefore, we would state that there is not enough evidence to reject the null hypothesis, and there is no difference in the distribution of vehicle class across 1999 and 2008 from the mpg dataset. If you run the code you will notice RStudio returns a warning message. The chi-squared warning message is due to the small sample size. Because the p-value is so large, we are not too concerned that our interpretation may be incorrect. Despite having no quantitative input, the chi-squared test enables data scientists to quantify the distribution of categorical variables. Although this test can be applied to more groups and larger datasets, it does have a limit.  Increasing the number of groups also increases the likelihood that insignificant changes will incorrectly be considered significant. Therefore, it's important to keep the number of unique values and groups relatively low. A good rule of thumb is to keep the number of unique values and groups lower than 20, which means the degrees of freedom (df in the output) is less than or equal to 19.
 
-###	Identify key characteristics of A/B and A/A testing.
+###	Identify key characteristics of A/B and A/A testing
 
 When performing analysis on a well-tested product, website, or softwarem a company may use a technique called **A/B Testing**. A/B testing is a random controlled experiemnet that uses an unchanged group and an experimental group to test potential changes using some standard of success. It is used to test whether or not the distribution of the success metric increases with the experimental group. A simple example would be advertisment in the Ecommerce industry. A company would test a number of creatives to see which generated the most success, and then create another number of creatives based off of that. Although A/B testing has been around for almost a century, giant software and tech companies such as Google and Amazon have popularized the practice by providing in-depth analytic metrics for their Google AdSense and AWS platforms.
 
@@ -398,7 +398,7 @@ Once we have decided on our experimental changes and the success metric, we must
 
 Due to its simple design and flexible application, the A/B testing framework is quickly becoming a go-to standard in the data science industry and one of the most highly desired data skills for Fortune 500 companies. Regardless, if you have experience in product design or optimization, you can use A/B testing to make informed design changes and confident development decisions.
 
-###	Determine the most appropriate statistical test for a given hypothesis and dataset. 
+###	Determine the most appropriate statistical test for a given hypothesis and dataset
 
 Whats more important than knowing how the math works or knowing how to program is *knowing the right questions to ask*. When ata scientists use data to make informed decision in a professional environment, knowing which statistical method to use is not the largest challenge. It about determining the right questions to ask.
 
