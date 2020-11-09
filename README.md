@@ -364,4 +364,25 @@ The p-value is above the assumed significance level. Therefore, we would state t
 
 ###	Identify key characteristics of A/B and A/A testing.
 
+When performing analysis on a well-tested product, website, or softwarem a company may use a technique called **A/B Testing**. A/B testing is a random controlled experiemnet that uses an unchanged group and an experimental group to test potential changes using some standard of success. It is used to test whether or not the distribution of the success metric increases with the experimental group. A simple example would be advertisment in the Ecommerce industry. A company would test a number of creatives to see which generated the most success, and then create another number of creatives based off of that. Although A/B testing has been around for almost a century, giant software and tech companies such as Google and Amazon have popularized the practice by providing in-depth analytic metrics for their Google AdSense and AWS platforms.
+
+First, we must decide what changes will be made to the experimental group. Typically, the number of changes will be very limited to ensure comparisons are equal; however, more substantial changes can also be tested using an A/B framework. Once a consensus has been made on the changes to be made to the experimental group, a success metric should be determined. The success metric can vary widely, depending on what is being tested. For example, a website might use consumer engagement as a success metric (e.g., number of visitors, clicked links, or time spent on a page). Alternatively, an automotive design team might want to know how performance changes after a slight design change to a vehicle's form factor, so the team's success metric might be mpg fuel efficiency.
+Once we have decided on our experimental changes and the success metric, we must determine which statistical test is most appropriate. In this course, we'll only concern ourselves with normally distributed data and categorical data, which limits the number of statistical tests we'll need. For our purposes, we can apply the following logic to determine the most appropriate statistical test:
+
+- If the success metric is numerical and the sample size is small, a z-score summary statistic can be sufficient to compare the mean and variability of both groups.
+- If the success metric is numerical and the sample size is large, a two-sample t-test should be used to compare the distribution of both groups.
+- If the success metric is categorical, you may use a chi-squared test to compare the distribution of categorical values between both groups.
+
+Due to its simple design and flexible application, the A/B testing framework is quickly becoming a go-to standard in the data science industry and one of the most highly desired data skills for Fortune 500 companies. Regardless, if you have experience in product design or optimization, you can use A/B testing to make informed design changes and confident development decisions.
+
 ###	Determine the most appropriate statistical test for a given hypothesis and dataset. 
+
+Whats more important than knowing how the math works or knowing how to program is *knowing the right questions to ask*. When ata scientists use data to make informed decision in a professional environment, knowing which statistical method to use is not the largest challenge. It about determining the right questions to ask.
+
+**Retrospective analysis** is the process of analyzing and interpreting a previously generated dataset where the outcome is already known. Retrospective analysis is useful because generated results and statistical results can be compared to known outcomes. Depending on the datasets and objectives, there are a number of analytical questions that can be asked such as:
+
+- Are the two tasks statistically different? We should use a t-test
+- Can one continuous dependent variable be predicted using an independent variable? Multiple independent variables? We would use a linear regression analysis
+- Are the multiple categorical variables tightly linked in a dataset? Are the distributions of the different categorical values equal? We would use a chi-squared test.
+
+In contrast, researchers can design their own study to answer their own specific questions. In this case, the data types and size of the dataset will be directly reflective of how complicated their hypotheses are, and what statistical analyses are required to answer the question. If we collect and measure the data ourselves, or if the data has been curated from a previous dataset, statistical tests can help us provide quantitative interpretation to the results.
