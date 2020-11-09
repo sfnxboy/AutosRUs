@@ -349,6 +349,16 @@ In R, we'll compute our chi-squared test using the chisq.test() function. The mo
 
 ```table(mpg$class,mpg$year) #generate contingency table```
 
+![image](https://user-images.githubusercontent.com/68082808/98496464-b024fd00-220f-11eb-82c6-679d40349fab.png)
+
+```
+tbl <- table(mpg$class,mpg$year) #generate contingency table
+chisq.test(tbl) #compare categorical distributions
+```
+
+
+
+
 
 ###	Identify key characteristics of A/B and A/A testing.
 
