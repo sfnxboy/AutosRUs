@@ -50,6 +50,35 @@ The design specifications for the MechaCar suspension coils dictate that the var
 
 ### T-Tests on Suspension Coils
 
+We'll perform T-Tests to determine if all manufacturing lots and each lot individually are statistically different from the population mean of 1498.78 PSI, which we gathered in an earlier calculation. The code is as follows:
+
+```
+population_table <- Suspension_Coil
+t.test(log10(population_table$PSI),mu=mean(log10(1498.78))) #compare sample versus population means
+```
+
+![image](https://user-images.githubusercontent.com/68082808/98592244-73084b80-229f-11eb-8f53-641c7649265c.png)
+
+Assuming our p-value value is the common 0.05 percent, and considering the calculated p-value is 0.9744 which is above the significance level, we state that we do not have enough evidence to reject the null hypothesis. Furthermore, we state that the two means are statistically similar. This finding should not be suprising. Lets determine if the PSU for each manufacturing lot is statistically different from the population mean of 1498.78 PSI. The code below includes the filter() method which filters data based on lot, the code is as follows:
+
+```
+Lot1 <- population_table %>% filter(Manufacturing_Lot=='Lot1')
+t.test(Lot1$PSI,mu=mean(1498.78)) #compare sample versus population means
+
+Lot2 <- population_table %>% filter(Manufacturing_Lot=='Lot2')
+t.test(Lot2$PSI,mu=mean(1498.78)) #compare sample versus population means
+
+Lot3 <- population_table %>% filter(Manufacturing_Lot=='Lot3')
+t.test(Lot3$PSI,mu=mean(1498.78)) #compare sample versus population means
+```
+
+![image](https://user-images.githubusercontent.com/68082808/98593005-8cf65e00-22a0-11eb-86c2-bd9b28b0e4ac.png)
+
+One can observe the p-value for lots 1 and 2 to be well below the assumed 0.05, 1.568e-11 and 0.0005911 respectively, therefore we may reject the null hypothesis and state that that Lots 1 and 2 are statistically different compared to our population mean. The p-value for the third lot is 0.1589, a number larger than 0.05. For lot 3 we state that there is not enough evidence to reject the null hypothesis, and we can assume the the third lot and the population mean are statistically similar.
+
+###
+
+
 
 ## Process
 
