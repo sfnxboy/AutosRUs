@@ -316,12 +316,17 @@ plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
 plt + geom_point() + geom_line(aes(y=yvals), color = "red") #plot scatter and linear model
 ```
 
-
+![image](https://user-images.githubusercontent.com/68082808/98490007-36384800-21fe-11eb-9881-72949c23a4c9.png)
 
 Using our visualization in combination with our calculated p-value and r-squared value, we have determined that there is a significant relationship between horsepower and quarter-mile time.
 
 Although the relationship between both variables is statistically significant, this linear model is not ideal. According to the calculated r-squared value, using only quarter-mile time to predict horsepower is roughly as accurate as guessing using a coin toss. In other words, the variability we observed within our horsepower data must come from multiple sources of variance. To accurately predict future horsepower observations, we need to use a more robust model.
 
+Multiple linear regression is a statistical model that extends the scope and flexibility of a simple linear regression model. Instead of using a single independent variable to account for all variability observed in the dependent variable, a multiple linear regression uses multiple independent variables to account for parts of the total variance observed in the dependent variable. To better predict the quarter-mile time (qsec) dependent variable, we can add other variables of interest such as fuel efficiency (mpg), engine size (disp), rear axle ratio (drat), vehicle weight (wt), and horsepower (hp) as independent variables to our multiple linear regression model.
+
+In R, our multiple linear regression statement is as follows:
+
+```lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars) #generate multiple linear regression model```
 
 ###	Implement and evaluate a chi-squared test for a given dataset.
 
