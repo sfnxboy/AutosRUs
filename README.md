@@ -11,6 +11,8 @@ The R language has a large community, and great number of supportive documentati
 
 ## MechaCar Statistical Analysis
 
+AutosRUs’ newest prototype, the MechaCar, is suffering from production troubles that are blocking the manufacturing team’s progress. AutosRUs’ upper management has called on us to review the production data for insights that may help the manufacturing team.
+
 ### Linear Regression to Predict MPG
 The MechaCar_mpg.csv file contains mpg test results for 50 prototype MachaCars. The prototypes were produced using multiple design specifications to identify ideal vehicle performance. Multiple metrics, such as vehicle length, vehicle weight, spoiler angle, ground clearance, and drivetrain were calculated for each vehicle. The following code generates a multiple linear regression model.
 
@@ -50,7 +52,7 @@ The design specifications for the MechaCar suspension coils dictate that the var
 
 ### T-Tests on Suspension Coils
 
-We'll perform T-Tests to determine if all manufacturing lots and each lot individually are statistically different from the population mean of 1498.78 PSI, which we gathered in an earlier calculation. The code is as follows:
+We'll perform T-Tests to determine if all manufacturing lots and each lot individually are statistically different from the population mean of 1498.78 PSI, which we gathered in an earlier calculation. The null hypothesis is that there is no statistical difference between our paired observations. The code is as follows:
 
 ```
 population_table <- Suspension_Coil
@@ -76,8 +78,19 @@ t.test(Lot3$PSI,mu=mean(1498.78)) #compare sample versus population means
 
 One can observe the p-value for lots 1 and 2 to be well below the assumed 0.05, 1.568e-11 and 0.0005911 respectively, therefore we may reject the null hypothesis and state that that Lots 1 and 2 are statistically different compared to our population mean. The p-value for the third lot is 0.1589, a number larger than 0.05. For lot 3 we state that there is not enough evidence to reject the null hypothesis, and we can assume the the third lot and the population mean are statistically similar.
 
-###
+### Variety in Lots 1 and 2
 
+Lots 1 and 2 have have proved to be statistically different from the population, but just how much do they vary in respect to eachother in terms of outputted PSI. The null hypothesis is that there is no statistical difference between our paired observations. We already filtered the two variables using the filter() method. The t-test function will allow us to run a paired t-test given an additional argument. Paired tells the t.test() function to perform a paired t-test, this value must be set to TRUE.The code will look as follows:
+
+```
+Lot1 <- population_table %>% filter(Manufacturing_Lot=='Lot1')
+Lot2 <- population_table %>% filter(Manufacturing_Lot=='Lot2')
+t.test(Lot1$PSI,Lot2$PSI,paired = T) #compare the mean difference between two samples
+```
+
+![image](https://user-images.githubusercontent.com/68082808/98612783-df487680-22c2-11eb-9755-3605d4bc767c.png)
+
+The p-value is 0.6052, a number above the assumed significance value of 0.05. Because the p-value is above the significance level, we must state that there is not enough evidence to reject the null hypothesis, and there is no overall difference in PSI output by vehicles in the two lots.
 
 
 ## Process
