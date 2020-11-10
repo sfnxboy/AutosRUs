@@ -6,11 +6,11 @@ numList = c(0,1,2,3,4,5,6,7,8,9)
 numList[2] # Outputs to console. Note: R;s index starts at 1
 
 # read.csv method allows RStudio to extract data from .csv files
-demo_table <- read.csv(file='demo.csv',check.names=F,stringsAsFactors = F)
+demo_table <- read.csv(file='01_Demo/demo.csv',check.names=F,stringsAsFactors = F)
 
 # After importing the jsonlite library, the from JSON method can be used to extract data from a JSON file
 library(jsonlite)
-demo_table2 <- fromJSON(txt='demo.json')
+demo_table2 <- fromJSON(txt='01_Demo/demo.json')
 
 # Create a filtered table var by calling the table, and using the $ operator to select a column/row
 # Note the reailing comma.
@@ -167,7 +167,7 @@ used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Dri
 cor(used_matrix)
 
 # Linear Regression
-lm(qsec~hp,mtcars) #summarize linear model
+lm(qsec~hp,mtcars) #summarize linear model6
 
 model <- lm(qsec ~ hp,mtcars) #create linear model
 yvals <- model$coefficients['hp']*mtcars$hp +
